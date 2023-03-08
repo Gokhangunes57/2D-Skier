@@ -6,13 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class CrashDetect : MonoBehaviour
 {
+    [SerializeField] private float delay = .5f;
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Ground"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+            Invoke("LoadNextScene",delay);
         }
         
+    }
+    
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
     }
     
 }
