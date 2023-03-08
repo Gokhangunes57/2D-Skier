@@ -23,5 +23,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddTorque(-torq);
         }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            rb.AddForce(transform.up * 10f);    
+        }
     }
 }

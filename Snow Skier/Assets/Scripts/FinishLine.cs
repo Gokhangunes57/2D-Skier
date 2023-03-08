@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class FinishLine : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            Debug.Log("Finish line");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
         }
     }
 }
