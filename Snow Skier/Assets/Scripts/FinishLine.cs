@@ -8,12 +8,19 @@ public class FinishLine : MonoBehaviour
 {
     [SerializeField] private float delay = .5f;
     [SerializeField] ParticleSystem finishParticles;
-    
+    [SerializeField] AudioSource finishSound;
+
+    private void Start()
+    {
+        finishSound = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
             finishParticles.Play();
+            finishSound.Play();
             Invoke("LoadNextScene",delay);
         }
     }
