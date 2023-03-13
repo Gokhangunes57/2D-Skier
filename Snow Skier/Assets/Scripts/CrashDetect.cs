@@ -16,6 +16,7 @@ public class CrashDetect : MonoBehaviour
     {
         if (col.CompareTag("Ground"))
         {
+            FindObjectOfType<PlayerController>().DisableControls();
             crashParticles.Play();
             GetComponent<AudioSource>().PlayOneShot(crashSound);
             Invoke("LoadNextScene",delay);

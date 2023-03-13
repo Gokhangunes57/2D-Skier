@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float torq = 1f;
     [SerializeField] private float boostSpeed = 30f;
     [SerializeField] private float baseSpeed = 20f;
+      bool CanMove = true;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,8 +22,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rotate();
-        RespondToBoost();
+        if (CanMove)
+        {
+            Rotate();
+            RespondToBoost();
+        }
+        
+    }
+    public void DisableControls()
+    {
+       CanMove = false;
     }
 
     void Rotate()
