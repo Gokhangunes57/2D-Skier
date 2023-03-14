@@ -6,27 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
-    [SerializeField] private float delay = .5f;
+    
     [SerializeField] ParticleSystem finishParticles;
     [SerializeField] AudioSource finishSound;
+    GameObject player;
+    SurfaceEffector2D surfaceEffector2D;
 
     private void Start()
     {
         finishSound = GetComponent<AudioSource>();
+        player = GameObject.FindWithTag("Player");
+        surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
-            finishParticles.Play();
+           
             finishSound.Play();
-            Invoke("LoadNextScene",delay);
+            surfaceEffector2D.speed = 0;
+            
         }
     }
-    
-    void LoadNextScene()
+
+    private void Update()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
+        if ( player.transform.position.x>560)
+        {
+            finishParticles.Play();
+        }
     }
+
+    
 }
