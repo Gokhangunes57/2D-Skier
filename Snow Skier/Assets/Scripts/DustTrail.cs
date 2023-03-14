@@ -13,10 +13,13 @@ public class DustTrail : MonoBehaviour
     bool ExitWorked = false;
 
 
+    
+
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+            
             ExitWorked = true;
             dustTrail.Stop();
         }
@@ -36,6 +39,7 @@ public class DustTrail : MonoBehaviour
         if (ExitWorked == true)
         {
             Score();
+          
 
         }
 
@@ -43,7 +47,8 @@ public class DustTrail : MonoBehaviour
 
     void Score()
     {
-       score++;
+        
+        score++;
        scoreText.text = "Score: " + score.ToString();
     }
 }
