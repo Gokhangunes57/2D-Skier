@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float boostSpeed = 30f;
     [SerializeField] private float baseSpeed = 20f;
     bool CanMove = true;
-    [SerializeField] AudioSource gameMusic;
+    [SerializeField] AudioClip gamemusic;
 
 
 
@@ -21,8 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
-        gameMusic = GetComponent<AudioSource>();
-        gameMusic.Play();
+        GetComponent<AudioSource>().PlayOneShot(gamemusic);
 
     }
 

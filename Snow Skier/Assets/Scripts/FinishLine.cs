@@ -11,12 +11,16 @@ public class FinishLine : MonoBehaviour
     [SerializeField] AudioSource finishSound;
     GameObject player;
     SurfaceEffector2D surfaceEffector2D;
+    public GameObject finishPanel;
+   
+    
 
     private void Start()
     {
         finishSound = GetComponent<AudioSource>();
         player = GameObject.FindWithTag("Player");
         surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
+       
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -26,7 +30,11 @@ public class FinishLine : MonoBehaviour
            
             finishSound.Play();
             surfaceEffector2D.speed = 0;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            finishPanel.SetActive(true);
             
+
+
         }
     }
 
@@ -36,6 +44,11 @@ public class FinishLine : MonoBehaviour
         {
             finishParticles.Play();
         }
+    }
+    
+   public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
     }
 
     
