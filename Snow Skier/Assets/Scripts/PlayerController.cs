@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SurfaceEffector2D surfaceEffector2D;
 
-    [SerializeField] private float torq = 1f;
-    [SerializeField] private float boostSpeed = 30f;
+    [SerializeField] private float torq = 10f;
+    [SerializeField] private float boostSpeed = 40f;
     [SerializeField] private float baseSpeed = 20f;
     bool CanMove = true;
     [SerializeField] AudioClip gamemusic;
@@ -46,20 +46,7 @@ public class PlayerController : MonoBehaviour
 
     void Rotate()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            rb.AddTorque(torq);
-
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            rb.AddTorque(-torq);
-
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            rb.AddForce(transform.up * 10f);
-        }
+       Debug.Log("çalıştı");
     }
 
     void RespondToBoost()
@@ -68,10 +55,29 @@ public class PlayerController : MonoBehaviour
         {
             surfaceEffector2D.speed = boostSpeed;
         }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            rb.AddTorque(torq);
+            Debug.Log("çalıştı left");
+
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            rb.AddTorque(-torq);
+            Debug.Log("çalıştı right");
+
+        }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            rb.AddForce(transform.up * 10f);
+        }
+        
         else
         {
             surfaceEffector2D.speed = baseSpeed;
         }
+        
+        
 
     }
 

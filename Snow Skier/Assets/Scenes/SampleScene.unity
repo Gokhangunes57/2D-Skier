@@ -8234,7 +8234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb55a349e892499469c8c4e03e68d4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torq: 10
+  torq: 160
   boostSpeed: 40
   baseSpeed: 20
   gamemusic: {fileID: 8300000, guid: 5c89003ca4532004ab5f74872231f33c, type: 3}
